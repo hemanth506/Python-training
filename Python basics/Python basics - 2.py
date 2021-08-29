@@ -231,3 +231,28 @@ print(filtered_data)
 string1, string2, string3 = 'Ruchika', 'Hemanth Raaj', ''
 non_null = string1 or string2 or string3
 print(non_null)
+
+# ====================================================================================
+# MODULES
+
+# external modules
+import modules
+
+modules.prime(200)
+modules.fib(100)
+print(modules.__name__)
+
+# inbuilt modules
+import sys
+
+print(dir(modules))
+print("=" * 100)
+
+print(dir(sys))
+print("=" * 100)
+
+import builtins
+print(dir(builtins))
+print("=" * 100)    
+
+# ====================================================================================
