@@ -108,3 +108,131 @@ print(f.closed)
 import json
 print(json.dumps([1,3,'dvsb']))
 
+print("=" * 100)
+
+#=====================================================================================
+
+# Exceptions
+
+# Zero division error
+# print(10*(1/0))
+
+# name error
+# print(4 + spam*3)
+
+# type error
+# print('2' + 2)
+
+"""flag =True
+check = True
+while flag:
+    try:
+        if check:
+            x = int(input("Enter X number: "))
+            if isinstance(x,int):
+                print("It is an integer")
+                flag = False
+
+        a = int(input("Enter A number: "))
+        b = str(input("Enter B number: "))
+        print(a/b)
+        flag = False
+    except ValueError as vale:
+        print("It is not an integer  -> ",vale)
+        flag = True
+    except ZeroDivisionError as zerod:
+        print("Number cannot be divisible by zero  -> ", zerod)
+        flag = True
+        check = False
+    except NameError as nameE:
+        print("Invalid name  -> ", nameE)
+        flag = True
+    except TypeError as typeE:
+        print("Invalid Type  -> ", typeE)
+        flag = True
+    finally:
+        print("Executes every time")
+
+"""
+#=====================================================================================
+
+import sys
+
+try:
+    f = open('workfile1.txt')
+    s = f.readline()
+    i = str(s.strip())
+    print(i)
+except OSError as err:
+    print("OS error: {0}".format(err))
+except ValueError:
+    print("Could not convert data to an integer.")
+except:
+    print("Unexpected error:", sys.exc_info()[0])
+    raise
+finally:
+    print("closed")
+    f.close()
+
+print("=" * 100)
+
+#=====================================================================================
+
+try:
+    print('Exception is raised -> start')
+    raise NameError("Name error is raised")  # Raise Error
+    print('Exception is raised -> end') # After raise nothing is executed
+except NameError as e:
+    print ("An exception of -> {0}".format(e))
+
+print("=" * 100)
+
+#=====================================================================================
+
+class Accident(Exception):
+    def __init__(self, msg):
+        self.msg = msg
+    def handle(self):
+        print("accident occured, {0}".format(self.msg))
+
+try:
+    raise Accident("Crash between two vehicles")
+except Accident as acc:
+    acc.handle()
+
+print("=" * 100)
+
+#=====================================================================================
+
+class B(Exception):
+    pass
+
+class C(B):
+    pass
+
+class D(C):
+    pass
+
+for cls in [C, D, B]:
+    try:
+        raise cls()
+    except D:
+        print("D")
+    except C:
+        print("C")
+    except B:
+        print("B")
+
+print("=" * 100)
+
+#=====================================================================================
+
+for line in open("workfile.txt"):
+    print(line, end=" ")
+
+print("=" * 100)
+
+
+with open("workfile.txt") as f:
+    for line in f:
+        print(line, end=' ')
